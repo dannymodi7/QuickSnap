@@ -1,4 +1,4 @@
-using System;
+*using System;
 using SwinGameSDK;
 using CardGames.GameLogic;
 
@@ -17,16 +17,38 @@ namespace CardGames
 		/// Respond to the user input -- with requests affecting myGame
 		/// </summary>
 		/// <param name="myGame">The game object to update in response to events.</param>
-		private static void HandleUserInput(Snap myGame)
-		{
-			//Fetch the next batch of UI interaction
-			SwinGame.ProcessEvents();
+        private static void HandleUserInput(Snap myGame)
+        {
+            //Fetch the next batch of UI interaction
+            SwinGame.ProcessEvents();
 
-			if (SwinGame.KeyTyped (KeyCode.vk_SPACE))
-			{
-				myGame.Start ();
-			}
-		}
+<<<<<<< HEAD
+
+=======
+            if (SwinGame.KeyTyped(KeyCode.vk_SPACE))
+            {
+			myGame.Start ();
+                myGame.FlipNextCard();
+            }
+
+            if (myGame.IsStarted)
+            {
+                if (SwinGame.KeyTyped(KeyCode.vk_LSHIFT) &&
+                     SwinGame.KeyTyped(KeyCode.vk_RSHIFT))
+                {
+                    //TODO: add sound effects 
+                }
+                else if (SwinGame.KeyTyped(KeyCode.vk_LSHIFT))
+                {
+                    myGame.PlayerHit(0);
+                }
+                else if (SwinGame.KeyTyped(KeyCode.vk_RSHIFT))
+                {
+                    myGame.PlayerHit(1);
+                }
+            }
+        }
+>>>>>>> origin/add-player-hit
 
 		/// <summary>
 		/// Draws the game to the Window.
